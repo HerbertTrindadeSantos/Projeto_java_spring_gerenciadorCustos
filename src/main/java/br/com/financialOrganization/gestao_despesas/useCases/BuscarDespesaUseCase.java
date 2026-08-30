@@ -1,25 +1,32 @@
 package br.com.financialOrganization.gestao_despesas.useCases;
 
+
 import br.com.financialOrganization.gestao_despesas.entity.Despesa;
 import br.com.financialOrganization.gestao_despesas.repository.DespesaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Service
-public class CadastroDespesaUseCase {
+public class BuscarDespesaUseCase {
 
     @Autowired
     private DespesaRepository despesaRepository;
 
-    public Despesa execute(Despesa despesa){
 
-        if (despesa.getCategoria() == null || despesa.getData() == null || despesa.getDescricao() == null || despesa.getEmail() == null ){
-            throw new IllegalArgumentException("Preencher todos os campos");
+    public List<Despesa> execute(String email, LocalDate data) {
+
+        List<Despesa> despesas;
+
+        if (data != null) {
+            despesas = despesaRepository.findByEmailAndData(email, data);
+        } else {
+            despesas = despesaRepository.findByEmail(email);
         }
-        despesa = despesaRepository.save(despesa);
-        return despesa;
+        return despesas;
     }
-
 
 
 }
