@@ -1,9 +1,18 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Arquivos de build do Maven (Necessários apenas os binários, não a pasta inteira)
+**/target/
+!.mvn/wrapper/maven-wrapper.jar
 
+# Configurações locais do Maven wrapper
+.mvn/wrapper/
+
+# Ignorar arquivos de dados locais que sua API possa gerar
+.data/
+
+# SISTEMAS OPERACIONAIS
+.DS_Store
+Thumbs.db
+
+# TOOLS & IDES
 ### STS ###
 .apt_generated
 .classpath
@@ -14,10 +23,11 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
+
 
 ### NetBeans ###
 /nbproject/private/
@@ -26,8 +36,8 @@ target/
 /nbdist/
 /.nb-gradle/
 build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
+
+
